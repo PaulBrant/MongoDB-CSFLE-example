@@ -9,11 +9,14 @@ For complete information, please see the MongoDB [Client-Side Encryption Documen
 
 The snippets in this repository are meant to be simple copy/paste examples to get you up and running quickly to let you explore the main features of MongoDB's client-side encryption.
 
-To use, create 2 AWS IAM users and 2 AWS KMS encryption keys. Give user1 access to both keys and
-give user 2 access to key1. Then copy environment-template.js to environment.js and update the values to the
-corresponding values for your MongoDB cluster and AWS environment.
+To use 
+* Create 2 AWS IAM users 
+* Create 2 AWS KMS encryption keys. Give user1 access to both keys and give user 2 access to key1. 
+* Copy environment-template.js to environment.js and update the values to the corresponding values for your MongoDB cluster and AWS environment.
+* Then run:
+    *    mongosh --shell --nodb createDataKeys.js
+    *    mongosh --shell --nodb people.js
+    *    mongosh --shell --nodb members.js
 
-Then run:
-mongosh --shell --nodb createDataKeys.js
-mongosh --shell --nodb people.js
-mongosh --shell --nodb members.js
+Compass can be configured with and without the AWS credentials to demonstrate viewing the resulting collections.
+
