@@ -49,15 +49,15 @@ var clientSideFLEOptions = {
 var encryptedSession2 = new Mongo(connectStr, clientSideFLEOptions);
 db = encryptedSession2.getDB(demoDB);
 
-print("Read only data which key2 can access");
-print("Should print out the records from group key1");
+print("Since we only have access to key1, we can only decrypt the data in groupId key1");
+print("Should print out the records from group key1 with fields decrypted");
 mem = db.members.find({groupId: 'key1'});
 while (mem.hasNext()) {
   printjson(mem.next());
 }
 
 print("Try to read all data with key2");
-print("error is expected because all data can't be decrypted...");
+print("error is expected because data from groupId key2 can't be decrypted...");
 mem = db.members.find();
 while (mem.hasNext()) {
   printjson(mem.next());
